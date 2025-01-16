@@ -6,8 +6,15 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:11:42 by rsrour            #+#    #+#             */
-/*   Updated: 2025/01/16 15:11:55 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/01/16 15:32:51 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+
+// ./client PID "message"
+int main(int argc, char **argv)
+{
+    
+    return (0);
+}

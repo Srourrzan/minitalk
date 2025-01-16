@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:01:14 by rsrour            #+#    #+#             */
-/*   Updated: 2025/01/16 15:01:15 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/01/16 19:07:41 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <sys/types.h>
+
+void    ft_signal(int, void *, int)
 
 #endif
