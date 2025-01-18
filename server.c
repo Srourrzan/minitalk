@@ -6,18 +6,19 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:12:02 by rsrour            #+#    #+#             */
-/*   Updated: 2025/01/16 20:16:34 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/01/18 01:20:42 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
 /*
- * SIGUSR1 or SIGUSR2 from goku
- *  establish a handler
- *  for these signals
- *  if SIGUSR1 -> bit 1
- *  if SIGUSR2 -> bit 0
+ * Server Checklist
+ * Display its PID
+ * Create an endless loop so that the server can receive signals at any time.
+ * Receive signals
+ * Decrypt signals
+ *   For each signal received (SIGUSR1 & SIGUSR2) it should take a certain action
  *  ALLOWED func: write, ft_printf, signal, sigemptyset, sigaddset
  *  kill, getpid, malloc, free, pause, sleep, usleep, exit
  */
@@ -31,18 +32,9 @@
  * rather than leaving resources in an undefined state.
 */
 
-void    handler(int signo, siginfo_t *info, void *more_info)
-{
-    (void)more_info;
-    
-}
-
 int     main()
 {
     printf("server PID=%d\n", getpid());
-
-    ft_signal(SIGUSR1, handler, 1);
-    ft_signal(SIGUSR2, handler, 1);
     
     while(1)
         pause();
