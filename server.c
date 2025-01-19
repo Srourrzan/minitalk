@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:12:02 by rsrour            #+#    #+#             */
-/*   Updated: 2025/01/18 01:20:42 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/01/19 18:49:28 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 
 int     main()
 {
-    printf("server PID=%d\n", getpid());
+    ft_printf("server PID=%d\n", getpid());
     
     while(1)
         pause();
