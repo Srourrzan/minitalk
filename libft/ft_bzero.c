@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rsrour <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 15:10:12 by rsrour            #+#    #+#             */
-/*   Updated: 2024/09/01 17:43:05 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/01/19 18:38:24 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/libft.h"
+#include "header/libft.h"
 
 //#include <strings.h>
 

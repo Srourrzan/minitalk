@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rsrour <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 21:38:06 by rsrour            #+#    #+#             */
-/*   Updated: 2024/09/15 21:38:48 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/01/19 18:39:10 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/libft.h"
+#include "header/libft.h"
 
 /*
 Parameters
