@@ -10,37 +10,46 @@ SERVER_OBJS = $(addprefix $(OBJ_DIR)/, $(SERVER_SRCS:.c=.o))
 CLIENT_OBJS = $(addprefix $(OBJ_DIR)/, $(CLIENT_SRCS:.c=.o))
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -Llibft -lft -Ilibft/header
 
-all: $(SERVER_TARGET) $(CLIENT_TARGET)
+libftdir = libft
+libftname = libft.a
+LIBFT = $(libftdir)/$(libftname)
 
-# Server target rule
-$(SERVER_TARGET): $(SERVER_OBJS)
-	$(CC) $(CFLAGS) $(SERVER_OBJS) -o $(SERVER_TARGET)
+all: libft $(SERVER_TARGET) $(CLIENT_TARGET)
 
-# Client target rule
-$(CLIENT_TARGET): $(CLIENT_OBJS)
-	$(CC) $(CFLAGS) $(CLIENT_OBJS) -o $(CLIENT_TARGET)
+libft: $(LIBFT)
 
-# Pattern rule for compiling .o files in the obj directory
+$(LIBFT):
+	@echo "Building libft..."
+	@$(MAKE) -C $(libftdir) bonus
+
+$(SERVER_TARGET): libft/libft.a $(SERVER_OBJS) | libft
+	@echo "Linking $(SERVER_TARGET)..."
+	$(CC) $(CFLAGS) $(SERVER_OBJS) $(LIBFT) -o $(SERVER_TARGET)
+
+$(CLIENT_TARGET): libft/libft.a $(CLIENT_OBJS) | libft
+	@echo "Linking $(CLIENT_TARGET)..."
+	$(CC) $(CFLAGS) $(CLIENT_OBJS) $(LIBFT) -o $(CLIENT_TARGET)
+
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
+	@echo "Compiling $<..."
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Rule to create the obj directory
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
-# Clean and rebuild
+clean:
+	@echo "Cleaning object files..."
+	@rm -f $(SERVER_OBJS) $(CLIENT_OBJS)
+	@rm -rf $(OBJ_DIR)
+	@$(MAKE) -C $(libftdir) clean
+
+fclean: clean
+	@echo "Cleaning all targets..."
+	@rm -f $(SERVER_TARGET) $(CLIENT_TARGET)
+	@$(MAKE) -C $(libftdir) fclean
+
 re: fclean all
 
-# Remove executables and object files
-fclean: clean
-	rm -f $(SERVER_TARGET) $(CLIENT_TARGET)
-
-# Remove object files and obj directory
-clean:
-	rm -f $(SERVER_OBJS) $(CLIENT_OBJS)
-	rm -rf $(OBJ_DIR)
-
-# Mark these as phony targets
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re libft
