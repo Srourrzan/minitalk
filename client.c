@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:11:42 by rsrour            #+#    #+#             */
-/*   Updated: 2025/01/18 01:22:11 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/01/19 20:27:31 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,16 @@
  * - Create a stop condition so that the server knows when it has finished 
  *      receiving the message
 */
-int main(int argc, char **argv)
+
+int     ft_encrypt_string(char *msg)
 {
-    printf("argc: %d, argv[0]: %s", argc, argv[0]);
+    unsigned int     iter;
+    
+} 
+
+int     main(int argc, char **argv)
+{
+    printf("argc: %d, argv[0]: %s\n", argc, argv[0]);
+    printf("%d\n", SIGUSR2);
     return (0);
 }
