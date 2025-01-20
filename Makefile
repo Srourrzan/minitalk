@@ -3,7 +3,7 @@
 SERVER_TARGET = server
 CLIENT_TARGET = client
 SERVER_SRCS = server.c
-CLIENT_SRCS = client.c
+CLIENT_SRCS = client.c client_utils.c
 
 OBJ_DIR = obj
 SERVER_OBJS = $(addprefix $(OBJ_DIR)/, $(SERVER_SRCS:.c=.o))
