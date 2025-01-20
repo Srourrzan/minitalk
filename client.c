@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:11:42 by rsrour            #+#    #+#             */
-/*   Updated: 2025/01/20 12:28:39 by codespace        ###   ########.fr       */
+/*   Updated: 2025/01/20 13:24:41 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,11 @@ int     main(int argc, char **argv)
     t_data      *args;
 
     args = ft_parse_argc(argc, argv);
-    if (args)
-        printf("valid input\n");
-    else
-        printf("invalid input\n");
+    if (!args)
+    {
+        ft_putendl_fd("Invalid arguments", 2);
+        exit(1);
+    }
     free(args);
     return (0);
 }
