@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:11:42 by rsrour            #+#    #+#             */
-/*   Updated: 2025/01/19 20:27:31 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/01/20 11:12:04 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@
  *      receiving the message
 */
 
-int     ft_encrypt_string(char *msg)
-{
-    unsigned int     iter;
+// int     ft_encrypt_string(char *msg)
+// {
+//     unsigned int     iter;
     
-} 
+// } 
 
 int     main(int argc, char **argv)
 {
