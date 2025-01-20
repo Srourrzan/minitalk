@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:11:42 by rsrour            #+#    #+#             */
-/*   Updated: 2025/01/20 13:24:41 by codespace        ###   ########.fr       */
+/*   Updated: 2025/01/20 20:33:53 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,6 @@
  *      receiving the message
 */
 
-// int     ft_encrypt_string(char *msg)
-// {
-//     unsigned int     iter;
-    
-// } 
-
 int     main(int argc, char **argv)
 {
     t_data      *args;
@@ -40,6 +34,7 @@ int     main(int argc, char **argv)
         ft_putendl_fd("Invalid arguments", 2);
         exit(1);
     }
+    ft_send_message(args);
     free(args);
     return (0);
 }
