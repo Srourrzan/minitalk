@@ -10,7 +10,7 @@ SERVER_OBJS = $(addprefix $(OBJ_DIR)/, $(SERVER_SRCS:.c=.o))
 CLIENT_OBJS = $(addprefix $(OBJ_DIR)/, $(CLIENT_SRCS:.c=.o))
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Llibft -lft -Ilibft/header
+CFLAGS = -Wall -Wextra -Werror -Llibft -lft -Ilibft/header -g
 
 libftdir = libft
 libftname = libft.a

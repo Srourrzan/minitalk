@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:11:42 by rsrour            #+#    #+#             */
-/*   Updated: 2025/01/20 11:41:34 by codespace        ###   ########.fr       */
+/*   Updated: 2025/01/20 12:28:39 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,13 @@
 
 int     main(int argc, char **argv)
 {
-    if (argc == 3)
-    {
-        printf("Is the pid %s a valid pid?\n", argv[1]);
-        printf("%d\n", ft_validate_pid(argv[1]));
-    }
+    t_data      *args;
+
+    args = ft_parse_argc(argc, argv);
+    if (args)
+        printf("valid input\n");
+    else
+        printf("invalid input\n");
+    free(args);
     return (0);
 }

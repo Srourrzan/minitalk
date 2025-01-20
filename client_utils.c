@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:13:37 by codespace         #+#    #+#             */
-/*   Updated: 2025/01/20 11:40:35 by codespace        ###   ########.fr       */
+/*   Updated: 2025/01/20 12:29:44 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,20 @@ int     ft_validate_pid(const char *str)
         iter++;
     }
     return (valid);
+}
+
+t_data     *ft_parse_argc(int argc, char **argv)
+{
+    t_data  *args;
+    int     numeric_pid;
+
+    args = malloc(sizeof(t_data));
+    if (!args)
+        return(NULL);
+    if(argc != 3 || !ft_validate_pid(argv[1]))
+        return (NULL);
+    numeric_pid = ft_atoi(argv[1]);
+    args->s_pid = numeric_pid;
+    args->message = argv[2];
+    return (args);
 }

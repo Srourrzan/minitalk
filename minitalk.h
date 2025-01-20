@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:01:14 by rsrour            #+#    #+#             */
-/*   Updated: 2025/01/20 11:40:51 by codespace        ###   ########.fr       */
+/*   Updated: 2025/01/20 12:26:35 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ typedef struct s_data
 }			t_data;
 
 int     ft_validate_pid(const char *str);
+t_data     *ft_parse_argc(int argc, char **argv);
 
 #endif
