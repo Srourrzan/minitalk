@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:13:37 by codespace         #+#    #+#             */
-/*   Updated: 2025/01/20 13:22:59 by codespace        ###   ########.fr       */
+/*   Updated: 2025/01/23 15:03:49 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
  * If the pid is written using digits, the function will return 1
  * otherwise it will return 0.
  */
+
+static int  signal_acknowledged = 0;
 
 int     ft_validate_pid(const char *str)
 {
@@ -52,4 +54,13 @@ t_data     *ft_parse_argc(int argc, char **argv)
     args->s_pid = numeric_pid;
     args->message = argv[2];
     return (args);
+}
+
+int     ft_send_message(t_data args)
+{
+    while (!signal_acknowledged)
+    {
+        
+    }
+    
 }
