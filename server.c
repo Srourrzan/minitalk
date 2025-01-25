@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:12:02 by rsrour            #+#    #+#             */
-/*   Updated: 2025/01/25 15:53:29 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/01/25 16:08:05 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@
  * we can ensure that the program will exit cleanly when it is terminated, 
  * rather than leaving resources in an undefined state.
 */
-void handle(int signal, siginfo_t* info, void *ucontext)
+void handle(int signal, siginfo_t s*ig_info, void *context)
 {
+    static t_message    *head;
+    
     if(signal == SIGUSR1)
     {
         write(2, "1", 1);
