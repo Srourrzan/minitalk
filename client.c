@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:11:42 by rsrour            #+#    #+#             */
-/*   Updated: 2025/01/24 04:14:12 by codespace        ###   ########.fr       */
+/*   Updated: 2025/01/25 09:44:22 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,6 @@ void    light_on(int sig)
  * - Create a stop condition so that the server knows when it has finished 
  *      receiving the message
 */
-
-// int     ft_encrypt_string(char *msg)
-// {
-//     unsigned int     iter;
-    
-// } 
 
 int     main(int argc, char **argv)
 {
