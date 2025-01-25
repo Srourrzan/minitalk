@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:12:02 by rsrour            #+#    #+#             */
-/*   Updated: 2025/01/19 18:49:28 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/01/23 16:13:36 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,29 @@
  * we can ensure that the program will exit cleanly when it is terminated, 
  * rather than leaving resources in an undefined state.
 */
+void handle(int signal, siginfo_t* info, void *ucontext)
+{
+    if(signal == SIGUSR1)
+    {
+        write(2, "1", 1);
+        kill(info->si_pid, SIGUSR1);
+    }
+    if(signal == SIGUSR2)
+    {
+        write(2, "0", 1);
+        kill(info->si_pid, SIGUSR1);
+
+    }
+}
 
 int     main()
 {
+    struct sigaction sa;
+    sa.sa_flags = SA_SIGINFO;
+    sa.sa_sigaction = handle;
+    sigemptyset(&sa.sa_mask);
+    sigaction(SIGUSR1, &sa, NULL);
+    sigaction(SIGUSR2, &sa, NULL);
     ft_printf("server PID=%d\n", getpid());
     
     while(1)
