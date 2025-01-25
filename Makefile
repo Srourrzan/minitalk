@@ -2,7 +2,7 @@
 
 SERVER_TARGET = server
 CLIENT_TARGET = client
-SERVER_SRCS = server.c
+SERVER_SRCS = server.c server_utils.c
 CLIENT_SRCS = client.c client_utils.c
 
 OBJ_DIR = obj
