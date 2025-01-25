@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minitalk.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:01:14 by rsrour            #+#    #+#             */
-/*   Updated: 2025/01/25 09:46:00 by codespace        ###   ########.fr       */
+/*   Updated: 2025/01/25 15:54:06 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,10 @@ typedef struct s_data
 	char	*message;
 }			t_data;
 
-int     ft_validate_pid(const char *str);
+int     	ft_validate_pid(const char *str);
 t_data     *ft_parse_argc(int argc, char **argv);
-void    ft_send_message(t_data *args);
-void    send_char(int pid, char character);
+void    	ft_send_message(t_data *args);
+void    	send_char(int pid, char character);
+void    	sig_init();
 
 #endif

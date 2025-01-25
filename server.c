@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:12:02 by rsrour            #+#    #+#             */
-/*   Updated: 2025/01/23 16:13:36 by codespace        ###   ########.fr       */
+/*   Updated: 2025/01/25 15:53:29 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,26 @@ void handle(int signal, siginfo_t* info, void *ucontext)
     }
 }
 
-int     main()
+void    sig_init()
 {
-    struct sigaction sa;
+    struct sigaction    sa;
+    
     sa.sa_flags = SA_SIGINFO;
     sa.sa_sigaction = handle;
     sigemptyset(&sa.sa_mask);
-    sigaction(SIGUSR1, &sa, NULL);
-    sigaction(SIGUSR2, &sa, NULL);
-    ft_printf("server PID=%d\n", getpid());
+    if(sigaction(SIGUSR1, &sa, NULL) == -1)
+        ft_printf("Error\n");
+    if(sigaction(SIGUSR2, &sa, NULL) == -1)
+        ft_printf("Eror\n");
+}
+
+int     main()
+{
+    pid_t       pid;
     
+    pid = getpid();
+    ft_printf("server PID=%d\n", pid);
+    sig_init();    
     while(1)
         pause();
     return (0);
