@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:12:02 by rsrour            #+#    #+#             */
-/*   Updated: 2025/01/26 19:21:26 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/01/26 20:09:55 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,11 @@
 void    handle(int signal, siginfo_t *sig_info, void *context)
 {
     static t_message    *head;
-    t_message           *current;
+    //t_message           *current;
     
     (void)context;
+    if (head == NULL)
+        head = init_message(sig_info->si_pid);
     if(signal == SIGUSR1)
     {
         write(2, "1", 1);
@@ -47,6 +49,7 @@ void    handle(int signal, siginfo_t *sig_info, void *context)
         write(2, "0", 1);
         kill(sig_info->si_pid, SIGUSR1);
     }
+    free(head);
 }
 
 void    sig_init()

@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:01:14 by rsrour            #+#    #+#             */
-/*   Updated: 2025/01/26 19:52:32 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/01/26 20:08:16 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,11 @@ typedef	struct s_message
 }							t_message;
 
 
-int     	ft_validate_pid(const char *str);
-t_data     *ft_parse_argc(int argc, char **argv);
-void    	ft_send_message(t_data *args);
-void    	send_char(int pid, char character);
-void    	sig_init();
+int     		ft_validate_pid(const char *str);
+t_data     		*ft_parse_argc(int argc, char **argv);
+void    		ft_send_message(t_data *args);
+void    		send_char(int pid, char character);
+void    		sig_init();
+t_message       *init_message(int pid);
 
 #endif
