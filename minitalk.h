@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:01:14 by rsrour            #+#    #+#             */
-/*   Updated: 2025/01/25 16:16:17 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/01/26 19:52:32 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 # include <stdlib.h>
 # include <sys/types.h>
 # include <unistd.h>
+
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 1000000
+#endif
 
 typedef struct s_data
 {
