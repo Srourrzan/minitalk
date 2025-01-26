@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:11:42 by rsrour            #+#    #+#             */
-/*   Updated: 2025/01/25 09:44:22 by codespace        ###   ########.fr       */
+/*   Updated: 2025/01/26 21:17:32 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 #include <stdlib.h>
 
 
-int g_status;
-g_status = 0;
+int g_status = 0;
 
 void    light_on(int sig)
 {
@@ -25,21 +24,9 @@ void    light_on(int sig)
         g_status = 1;
 }
 
-// ./client PID "message"
-/*
- * CLient Checklist:
- * - Wrtie a program (main) in which the client takes two parameters/arguments
- *      - The PID of the server to which it wants to send the message
- *      - A message
- * - Encrypt the message (I did the encryption via bits)
- * - Send the message to the server (via its PID)
- * - Create a stop condition so that the server knows when it has finished 
- *      receiving the message
-*/
-
 int     main(int argc, char **argv)
 {
-    struct sigaction sa;
+    // struct sigaction sa;
     // sa.sa_flags = 0;
     // sa.sa_handler = light_on;
     // sigemptyset(&sa.sa_mask);
