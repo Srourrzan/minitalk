@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:13:37 by codespace         #+#    #+#             */
-/*   Updated: 2025/01/25 09:45:25 by codespace        ###   ########.fr       */
+/*   Updated: 2025/01/30 16:08:56 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
  * otherwise it will return 0.
  */
 
-static int  signal_acknowledged = 0;
+//static int  signal_acknowledged = 0;
 
 int     ft_validate_pid(const char *str)
 {
@@ -51,16 +51,21 @@ t_data     *ft_parse_argc(int argc, char **argv)
         return (NULL);
     }
     numeric_pid = ft_atoi(argv[1]);
+    if(numeric_pid < 0)
+    {
+        free(args);
+        return (NULL);
+    }
     args->s_pid = numeric_pid;
     args->message = argv[2];
     return (args);
 }
 
-int     ft_send_message(t_data args)
-{
-    while (!signal_acknowledged)
-    {
+// int     ft_send_message(t_data args)
+// {
+//     while (!signal_acknowledged)
+//     {
         
-    }
+//     }
     
-}
+// }
