@@ -6,18 +6,11 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:13:37 by codespace         #+#    #+#             */
-/*   Updated: 2025/01/30 16:08:56 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/01/30 16:24:53 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-
-/*
- * If the pid is written using digits, the function will return 1
- * otherwise it will return 0.
- */
-
-//static int  signal_acknowledged = 0;
 
 int     ft_validate_pid(const char *str)
 {
@@ -60,12 +53,3 @@ t_data     *ft_parse_argc(int argc, char **argv)
     args->message = argv[2];
     return (args);
 }
-
-// int     ft_send_message(t_data args)
-// {
-//     while (!signal_acknowledged)
-//     {
-        
-//     }
-    
-// }
