@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:12:02 by rsrour            #+#    #+#             */
-/*   Updated: 2025/01/30 10:49:13 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/01/30 15:41:54 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void    handle(int signal, siginfo_t *sig_info, void *context)
     free(head);
 }
 
-void    sig_init()
+void    sig_handler()
 {
     struct sigaction    sa;
     

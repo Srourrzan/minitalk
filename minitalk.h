@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:01:14 by rsrour            #+#    #+#             */
-/*   Updated: 2025/01/26 20:08:16 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/01/30 15:42:54 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int     		ft_validate_pid(const char *str);
 t_data     		*ft_parse_argc(int argc, char **argv);
 void    		ft_send_message(t_data *args);
 void    		send_char(int pid, char character);
-void    		sig_init();
+void		    sig_handler();
 t_message       *init_message(int pid);
 
 #endif
