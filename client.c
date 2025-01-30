@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:11:42 by rsrour            #+#    #+#             */
-/*   Updated: 2025/01/30 16:58:56 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/01/30 17:16:01 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,24 @@ void    light_on(int sig)
 {
     if(sig == SIGUSR1)
         g_status = 1;
+}
+
+void    send_bit(int pid, char bit)
+{
+    unsigned char   p_bit;
+    int     i_bit;
+
+    i_bit = 8;
+    p_bit = (unsigned char)bit;
+    while(i_bit--)
+    {
+        g_status = 0;
+        p_bit = (bit >> i_bit);
+        if (p_bit % 2 == 0)
+        {
+            
+        }
+    }
 }
 
 void    cli_sig_handler()
