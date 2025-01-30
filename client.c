@@ -6,93 +6,92 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:11:42 by rsrour            #+#    #+#             */
-/*   Updated: 2025/01/30 17:16:01 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/01/30 17:21:12 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-int g_status = 0;
+int		g_status = 0;
 
-void    light_on(int sig)
+void	light_on(int sig)
 {
-    if(sig == SIGUSR1)
-        g_status = 1;
+	if (sig == SIGUSR1)
+		g_status = 1;
 }
 
-void    send_bit(int pid, char bit)
+void	send_bit(int pid, char bit)
 {
-    unsigned char   p_bit;
-    int     i_bit;
+	unsigned char	p_bit;
+	int				i_bit;
 
-    i_bit = 8;
-    p_bit = (unsigned char)bit;
-    while(i_bit--)
-    {
-        g_status = 0;
-        p_bit = (bit >> i_bit);
-        if (p_bit % 2 == 0)
-        {
-            
-        }
-    }
+	i_bit = 8;
+	p_bit = (unsigned char)bit;
+	while (i_bit--)
+	{
+		g_status = 0;
+		p_bit = (bit >> i_bit);
+		if (p_bit % 2 == 0)
+		{
+		}
+	}
 }
 
-void    cli_sig_handler()
+void	cli_sig_handler(void)
 {
-    struct sigaction    sa;
-    
-    sa.sa_handler = &light_on;
-    sa.sa_flags = 0;
-    sigemptyset(&sa.sa_mask);
-    if (sigaction(SIGUSR1, &sa, NULL) == -1)
-        write(1, "Error\n", 6);
-    if (sigaction(SIGUSR2, &sa, NULL) == -1)
-        write(1, "Error\n", 6);
+	struct sigaction	sa;
+
+	sa.sa_handler = &light_on;
+	sa.sa_flags = 0;
+	sigemptyset(&sa.sa_mask);
+	if (sigaction(SIGUSR1, &sa, NULL) == -1)
+		write(1, "Error\n", 6);
+	if (sigaction(SIGUSR2, &sa, NULL) == -1)
+		write(1, "Error\n", 6);
 }
 
-int     main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    t_data      *args;
-    // int bit_count;
+	t_data *args;
+	// int bit_count;
 
-    args = ft_parse_argc(argc, argv);
-    if (!args)
-    {
-        ft_putendl_fd("Invalid arguments", 2);
-        exit(1);
-    }
-    cli_sig_handler();
-    // int i = 0;
-    // printf("%d", args->s_pid);
-    // while(args->message[i])
-    // {
-    //     bit_count = 8;
-    //     unsigned char temp = args->message[i];
-    //     while(bit_count--)
-    //     {
-    //         g_status = 0;
-    //         temp = args->message[i] >> bit_count;
-    //         if(temp % 2 == 0)
-    //         {
-    //             printf("%d", args->s_pid);
-    //             kill(args->s_pid, SIGUSR2);
-    //         }
-    //         else
-    //         {
-    //             printf("%d", args->s_pid);
-    //             kill(args->s_pid, SIGUSR1);
-    //         }
-    //         while (!g_status);
-    //     }
-    //     i++;
-    // }
-    // bit_count = 8;
-    // while(bit_count--)
-    // {
-    //     kill(args->s_pid, SIGUSR2);
-    // }
-    
-    // free(args);
-    return (0);
+	args = ft_parse_argc(argc, argv);
+	if (!args)
+	{
+		ft_putendl_fd("Invalid arguments", 2);
+		exit(1);
+	}
+	cli_sig_handler();
+	// int i = 0;
+	// printf("%d", args->s_pid);
+	// while(args->message[i])
+	// {
+	//     bit_count = 8;
+	//     unsigned char temp = args->message[i];
+	//     while(bit_count--)
+	//     {
+	//         g_status = 0;
+	//         temp = args->message[i] >> bit_count;
+	//         if(temp % 2 == 0)
+	//         {
+	//             printf("%d", args->s_pid);
+	//             kill(args->s_pid, SIGUSR2);
+	//         }
+	//         else
+	//         {
+	//             printf("%d", args->s_pid);
+	//             kill(args->s_pid, SIGUSR1);
+	//         }
+	//         while (!g_status);
+	//     }
+	//     i++;
+	// }
+	// bit_count = 8;
+	// while(bit_count--)
+	// {
+	//     kill(args->s_pid, SIGUSR2);
+	// }
+
+	// free(args);
+	return (0);
 }

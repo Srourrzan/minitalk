@@ -21,35 +21,34 @@
 # include <sys/types.h>
 # include <unistd.h>
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 1000000
-#endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1000000
+# endif
 
 typedef struct s_data
 {
-	int		s_pid;
-	char	*message;
-}			t_data;
+	int					s_pid;
+	char				*message;
+}						t_data;
 
-typedef	struct s_message
+typedef struct s_message
 {
-	int						pid;
-	unsigned	char		buff;
-	size_t					index;
-	struct s_message		*next;
-	int						active;
-	char					*message;
-	int						bit_count;
-	size_t					buffer_size;
-}							t_message;
+	int					pid;
+	unsigned char		buff;
+	size_t				index;
+	struct s_message	*next;
+	int					active;
+	char				*message;
+	int					bit_count;
+	size_t				buffer_size;
+}						t_message;
 
-
-int     		ft_validate_pid(const char *str);
-t_data     		*ft_parse_argc(int argc, char **argv);
-void    		ft_send_message(t_data *args);
-void    		send_char(int pid, char character);
-void		    sig_handler();
-void    		cli_sig_handler();
-t_message       *init_message(int pid);
+int						ft_validate_pid(const char *str);
+t_data					*ft_parse_argc(int argc, char **argv);
+void					ft_send_message(t_data *args);
+void					send_char(int pid, char character);
+void					sig_handler(void);
+void					cli_sig_handler(void);
+t_message				*init_message(int pid);
 
 #endif
