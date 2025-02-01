@@ -6,8 +6,16 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 21:16:46 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/01 21:21:53 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/01 21:25:42 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+
+int     main()
+{
+    pid_t   pid;
+
+    pid = getpid();
+    ft_printf("Server PID: %i\n", pid);
+}
