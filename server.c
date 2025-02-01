@@ -6,15 +6,26 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:12:02 by rsrour            #+#    #+#             */
-/*   Updated: 2025/01/30 17:19:34 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/01 16:53:12 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	handle(int signal, siginfo_t *sig_info, void *context)
+void handle(int signal, siginfo_t *sig_info, void *context)
 {
-	static t_message	*head;
+    static t_message    *head;
+    t_message           *curr;
+    
+    if(signal == SIGUSR1)
+    {
+        write(2, "1", 1);
+        kill(sig_info->si_pid, SIGUSR1);
+    }
+    if(signal == SIGUSR2)
+    {
+        write(2, "0", 1);
+        kill(sig_info->si_pid, SIGUSR2);
 
 	// t_message           *current;
 	(void)context;
@@ -32,8 +43,9 @@ void	handle(int signal, siginfo_t *sig_info, void *context)
 	}
 	free(head);
 }
+}
 
-void	sig_handler(void)
+void	sig_handler()
 {
 	struct sigaction	sa;
 
