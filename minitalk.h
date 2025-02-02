@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 21:17:10 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/02 20:14:44 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/02 20:24:37 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,18 @@ typedef struct s_data
 	int		pid;
 	char	*message;
 }			t_data;
+
+typedef struct s_message
+{
+    int             pid;
+    int             active;
+    size_t          index;
+    int             bit_count;
+    char            *message;
+    size_t          buffer_size;
+    unsigned char   buff;
+    struct s_message    *next;
+}               t_message;
 
 int			ft_pid_is_numeric(char *src);
 t_data		*ft_parse_args(char **argv, int argc);
