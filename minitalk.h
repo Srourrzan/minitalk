@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 21:17:10 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/02 19:41:10 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/02 20:14:44 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ int			ft_pid_is_numeric(char *src);
 t_data		*ft_parse_args(char **argv, int argc);
 void		ft_client_sig_handler(void);
 void		ft_g_set(int signal);
+void        ft_server_sig_handler();
 
 #endif
