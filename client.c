@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 17:45:31 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/02 19:41:23 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/02 20:17:35 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	ft_client_sig_handler(void)
 	sa.sa_flags = 0;
 	sigemptyset(&sa.sa_mask);
 	if (sigaction(SIGUSR1, &sa, NULL) == -1)
-		(write(1, "Error\n", 6));
+		(write(2, "Error\n", 6));
 	if (sigaction(SIGUSR2, &sa, NULL) == -1)
-		(write(1, "Error\n", 6));
+		(write(2, "Error\n", 6));
 }
 
 int	main(int argc, char **argv)
