@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 21:17:10 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/03 21:01:51 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/03 21:35:36 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ void		ft_client_sig_handler(void);
 void		ft_g_set(int signal);
 void        ft_server_sig_handler();
 t_message       *ft_init(int pid);
+t_message       *ft_search_or_create(t_message  **head, int pid);
 
 #endif
