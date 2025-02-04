@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 21:16:46 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/04 20:18:09 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/04 20:56:19 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,17 @@ void    ft_process_message(t_message **head, t_message **curr, siginfo_t *siginf
             free(curr);
             return;
         }
-    }    
+        ft_bzero((*curr)->message + (*curr)->buffer_size, BUFFER_SIZE);
+        (*curr)->buffer_size = (*curr)->buffer_size + BUFFER_SIZE;
+    }
+    (*curr)->message[(*curr)->index] = (*curr)->buff;
+    (*curr)->index = (*curr)->index + 1;
+    if ((*curr)->buff == 0)
+    {
+        ft_printf("%s\n", (*curr)->message);
+        (*curr)->active = 0;
+        
+    }
 }
 
 void    ft_receive_message(int signal, siginfo_t *siginfo, void *context)

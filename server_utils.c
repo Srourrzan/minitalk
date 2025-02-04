@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 19:43:46 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/04 20:13:15 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/04 20:59:24 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,19 @@ void    *ft_expand_message_space(void *message, size_t size, size_t old_size)
     new_ptr = ft_memcpy(new_ptr, message, size);
     free(message);
     return(new_ptr);
+}
+
+void    *ft_remove_message(t_message **head, int pid)
+{
+    t_message       *curr;
+    t_message       *prev;
+
+    if (!head || !*head)
+        return (NULL);
+    curr = *head;
+    prev = NULL;
+    while (curr)
+    {
+           
+    }
 }
