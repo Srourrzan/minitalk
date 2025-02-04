@@ -6,13 +6,30 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 21:16:46 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/03 21:58:47 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/04 20:18:09 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void    receive_message(int signal, siginfo_t *siginfo, void *context)
+void    ft_process_message(t_message **head, t_message **curr, siginfo_t *siginfo)
+{
+    if (!(*curr)->active)
+        return ;
+    if ((*curr)->index == (*curr)->buffer_size - 1)
+    {
+        (*curr)->message = ft_expand_message_space((*curr)->message, 
+                            (*curr)->buffer_size + BUFFER_SIZE, (curr)->buffer_size);
+        if(!(*curr)->message)
+        {
+            free((*curr)->message);
+            free(curr);
+            return;
+        }
+    }    
+}
+
+void    ft_receive_message(int signal, siginfo_t *siginfo, void *context)
 {
     static t_message    *head;
     t_message           *curr;
@@ -28,7 +45,7 @@ void    receive_message(int signal, siginfo_t *siginfo, void *context)
     curr->bit_count++;
     if (curr->bit_count == 8)
     {
-        
+        ft_process_message(&haed, &curr, siginfo);
     }
 }
 
@@ -36,7 +53,7 @@ void    ft_server_sig_handler()
 {
     struct sigaction    sa;
     
-    sa.sa_sigaction = &receive_message;
+    sa.sa_sigaction = &ft_receive_message;
     sa.sa_flags = SA_SIGINFO;
     sigemptyset(&sa.sa_mask);
     if (sigaction(SIGUSR1, &sa, NULL) == -1)
