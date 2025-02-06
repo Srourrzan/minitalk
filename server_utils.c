@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 19:43:46 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/04 20:59:24 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/05 22:40:17 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,18 @@ void    *ft_remove_message(t_message **head, int pid)
     prev = NULL;
     while (curr)
     {
-           
+        if (curr->pid == pid)
+        {
+            if (prev)
+                prev->next = curr->next;
+            else
+                *head = curr->next;
+            free(curr->message);
+            free(curr);
+            return (NULL);
+        }
+        prev = curr;
+        curr = curr->next;
     }
+    retrun (NULL);
 }

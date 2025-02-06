@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 21:16:46 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/04 20:56:19 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/05 22:48:04 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ void    ft_process_message(t_message **head, t_message **curr, siginfo_t *siginf
     {
         ft_printf("%s\n", (*curr)->message);
         (*curr)->active = 0;
-        
+        ft_remove_message(head, siginfo->si_pid);
+        (*curr) = NULL;
+        kill(siginfo->si_pid, SIGUSR1);
+        return ;
     }
 }
 
