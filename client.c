@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 17:45:31 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/06 18:27:45 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/06 20:13:17 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,32 @@ void	ft_g_set(int signal)
 		g_signal = 1;
 }
 
+void	ft_send_bit(int pid, char bit)
+{
+	unsigned char	temp;
+	int				i_bit;
+
+	i_bit = 8;
+	temp = (unsigned char)bit;
+	while (i_bit--)
+	{
+		g_signal = 0;
+		temp = (bit >> i_bit);
+		if (temp % 2 == 0)
+		{
+			if (kill(pid, SIGUSR2) == -1)
+				exit(write(2, "Error\n", 6));
+		}
+		else
+		{
+			if (kill(pid, SIGUSR1) == -1)
+				exit(write(2, "Error\n", 6));
+		}
+		while (!g_signal)
+			;
+	}
+}
+
 void	ft_send_message(int pid, char *str)
 {
 	int		i;
@@ -27,10 +53,10 @@ void	ft_send_message(int pid, char *str)
 	i = 0;
 	while (str[i])
 	{
-		send_bit(pid, str[i]);
+		ft_send_bit(pid, str[i]);
 		i++;
 	}
-	send_bit(pid, '\0');
+	ft_send_bit(pid, '\0');
 }
 
 void	ft_client_sig_handler(void)
@@ -58,5 +84,8 @@ int	main(int argc, char **argv)
 	}
 	printf("pid = %d, message = %s\n", t_args->pid, t_args->message);
 	ft_client_sig_handler();
+	if (argv[2][0] == '\0')
+		ft_send_message(t_args->pid, "\0");
+	ft_send_message(t_args->pid, t_args->message);
 	return (0);
 }
