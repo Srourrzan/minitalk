@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 19:43:46 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/05 22:40:17 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/06 20:20:37 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_message       *ft_init(int pid)
         free(new);
         return (NULL);
     }
+    ft_bzero(new->message, BUFFER_SIZE);
     new->index = 0;
     new->buffer_size = BUFFER_SIZE;
     new->pid = pid;
@@ -52,7 +53,7 @@ t_message       *ft_search_or_create(t_message  **head, int pid)
             return (current);
         if (!current->next)
         {
-            new = init(pid);
+            new = ft_init(pid);
             current->next = new;
             return (new);
         }
@@ -61,13 +62,13 @@ t_message       *ft_search_or_create(t_message  **head, int pid)
     return (NULL);
 }
 
-void    *ft_expand_message_space(void *message, size_t size, size_t old_size)
+void    *ft_expand_message_space(void *message, size_t size)//, size_t old_size)
 {
     void    *new_ptr;
 
     new_ptr = malloc(size);
     if (!new_ptr)
-        return;
+        return (NULL);
     new_ptr = ft_memcpy(new_ptr, message, size);
     free(message);
     return(new_ptr);
@@ -97,5 +98,5 @@ void    *ft_remove_message(t_message **head, int pid)
         prev = curr;
         curr = curr->next;
     }
-    retrun (NULL);
+    return (NULL);
 }
