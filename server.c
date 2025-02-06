@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 21:16:46 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/05 22:48:04 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/06 18:23:57 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void    ft_process_message(t_message **head, t_message **curr, siginfo_t *siginf
     if ((*curr)->index == (*curr)->buffer_size - 1)
     {
         (*curr)->message = ft_expand_message_space((*curr)->message, 
-                            (*curr)->buffer_size + BUFFER_SIZE, (curr)->buffer_size);
+                            (*curr)->buffer_size + BUFFER_SIZE, (*curr)->buffer_size);
         if(!(*curr)->message)
         {
             free((*curr)->message);
@@ -58,8 +58,16 @@ void    ft_receive_message(int signal, siginfo_t *siginfo, void *context)
     curr->bit_count++;
     if (curr->bit_count == 8)
     {
-        ft_process_message(&haed, &curr, siginfo);
+        ft_process_message(&head, &curr, siginfo);
+        if (curr)
+        {
+            curr->bit_count = 0;
+            curr->buff = 0;
+        }
     }
+    else
+        curr->buff = curr->buff << 1;
+    kill(siginfo->sipid, SIGUSR1);
 }
 
 void    ft_server_sig_handler()
