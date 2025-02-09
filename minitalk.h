@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 21:17:10 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/06 20:12:12 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/09 21:06:02 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_message       *ft_init(int pid);
 t_message       *ft_search_or_create(t_message  **head, int pid);
 void        ft_process_message(t_message **head, t_message **curr, siginfo_t *siginfo);
 void        ft_receive_message(int signal, siginfo_t *siginfo, void *context);
-void        *ft_expand_message_space(void *message, size_t size);//, size_t old_size);
+void    *ft_expand_message_space(void *message, size_t size, size_t old_size);//, size_t old_size);
 void        *ft_remove_message(t_message **head, int pid);
 void        ft_send_message(int pid, char *str);
 void	    ft_send_bit(int pid, char bit);

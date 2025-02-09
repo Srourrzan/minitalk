@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 21:16:46 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/06 20:17:36 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/09 21:16:02 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,13 @@ void    ft_process_message(t_message **head, t_message **curr, siginfo_t *siginf
     if ((*curr)->index == (*curr)->buffer_size - 1)
     {
         (*curr)->message = ft_expand_message_space((*curr)->message, 
-                            (*curr)->buffer_size + BUFFER_SIZE);//, (*curr)->buffer_size);
+                            (*curr)->buffer_size + BUFFER_SIZE, (*curr)->buffer_size );
         if(!(*curr)->message)
         {
-            free((*curr)->message);
-            free(curr);
+            ft_remove_message(head, siginfo->si_pid);
+            (*curr) = NULL;
             return;
         }
-        ft_bzero((*curr)->message + (*curr)->buffer_size, BUFFER_SIZE);
         (*curr)->buffer_size = (*curr)->buffer_size + BUFFER_SIZE;
     }
     (*curr)->message[(*curr)->index] = (*curr)->buff;
@@ -51,7 +50,7 @@ void    ft_receive_message(int signal, siginfo_t *siginfo, void *context)
     if (head == NULL)
         head = ft_init(siginfo->si_pid);
     curr = ft_search_or_create(&head, siginfo->si_pid);
-    if (!curr || curr->active)
+    if (curr == NULL || !curr->active)
         return ;
     if (signal == SIGUSR1)
         curr->buff |= 1;
