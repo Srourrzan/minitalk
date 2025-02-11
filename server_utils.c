@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 19:43:46 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/06 20:20:37 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/09 21:05:18 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,35 @@ t_message       *ft_search_or_create(t_message  **head, int pid)
     return (NULL);
 }
 
-void    *ft_expand_message_space(void *message, size_t size)//, size_t old_size)
+static void	*razan_memcpy(void *dst, const void *src, size_t size, size_t old_size)
+{
+	unsigned char	*s;
+	unsigned char	*d;
+	size_t			i;
+
+	if (!dst || !src)
+		return (NULL);
+	s = (unsigned char *)src;
+	d = (unsigned char *)dst;
+	i = 0;
+	while (i < old_size && i < size)
+	{
+		d[i] = s[i];
+		i++;
+	}
+	return (dst);
+}
+
+
+void    *ft_expand_message_space(void *message, size_t size, size_t old_size)//, size_t old_size)
 {
     void    *new_ptr;
 
     new_ptr = malloc(size);
     if (!new_ptr)
         return (NULL);
-    new_ptr = ft_memcpy(new_ptr, message, size);
+    ft_bzero(new_ptr, size);
+    new_ptr = razan_memcpy(new_ptr, message, size, old_size);
     free(message);
     return(new_ptr);
 }
