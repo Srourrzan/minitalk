@@ -10,7 +10,8 @@ SERVER_OBJS = $(addprefix $(OBJ_DIR)/, $(SERVER_SRCS:.c=.o))
 CLIENT_OBJS = $(addprefix $(OBJ_DIR)/, $(CLIENT_SRCS:.c=.o))
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Llibft -lft -Ilibft/header -g
+CFLAGS = -Wall -Wextra -Werror 
+LFLAGS = -Llibft -lft -Ilibft/header -g
 
 libftdir = libft
 libftname = libft.a
@@ -26,11 +27,11 @@ $(LIBFT):
 
 $(SERVER_TARGET): libft/libft.a $(SERVER_OBJS) | libft
 	@echo "Linking $(SERVER_TARGET)..."
-	$(CC) $(CFLAGS) $(SERVER_OBJS) $(LIBFT) -o $(SERVER_TARGET)
+	$(CC) $(CFLAGS) $(SERVER_OBJS) $(LFLAGS) $(LIBFT) -o $(SERVER_TARGET)
 
 $(CLIENT_TARGET): libft/libft.a $(CLIENT_OBJS) | libft
 	@echo "Linking $(CLIENT_TARGET)..."
-	$(CC) $(CFLAGS) $(CLIENT_OBJS) $(LIBFT) -o $(CLIENT_TARGET)
+	$(CC) $(CFLAGS) $(CLIENT_OBJS) $(LFLAGS) $(LIBFT) -o $(CLIENT_TARGET)
 
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
 	@echo "Compiling $<..."
