@@ -6,7 +6,7 @@
 /*   By: rsrour <rsrour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 17:45:31 by rsrour            #+#    #+#             */
-/*   Updated: 2025/02/06 20:13:17 by rsrour           ###   ########.fr       */
+/*   Updated: 2025/02/18 10:06:32 by rsrour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_send_bit(int pid, char bit)
 
 void	ft_send_message(int pid, char *str)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -87,5 +87,6 @@ int	main(int argc, char **argv)
 	if (argv[2][0] == '\0')
 		ft_send_message(t_args->pid, "\0");
 	ft_send_message(t_args->pid, t_args->message);
+	free(t_args);
 	return (0);
 }
